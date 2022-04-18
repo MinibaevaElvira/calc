@@ -90,23 +90,31 @@ public class Main {
                       arabNum2 = arabNumbers[i];
                   }
               }
+              if (arabNum1<1 || arabNum1>10 || arabNum2<1||arabNum2>10){
+                  throw new Exception("Калькулятор принимает на вход числа от 1 до 10 включительно, не более.");
+              }
               int resultR = 0;
               if (input.contains("+")) {
                   resultR = arabNum1 + arabNum2;
+
               } else if (input.contains("-")) {
                   resultR = arabNum1 - arabNum2;
-                  if(resultR<0){
-                      throw new Exception("В римской системе счисления нет отрицательных чисел.");
-                  }
+
               } else if (input.contains("/")) {
                   resultR = arabNum1 / arabNum2;
 
               } else if (input.contains("*")) {
                   resultR = arabNum1 * arabNum2;
+
               } else {
                   throw new Exception("Формат математической операции не удовлетворяет возможностям калькулятора.");
               }
               String resultRom ="";
+
+              if (resultR<1){
+                  throw new Exception("Результатом работы калькулятора с римскими числами могут быть только положительные числа.");
+              }
+
               for (int i = 0; i < arabNumbers.length; i++) {
                   if (arabNumbers[i] == resultR) {
                       resultRom = romanNumbers[i];
@@ -115,10 +123,6 @@ public class Main {
 
               return resultRom;
           }
-
-
-
-    }
 
 
 
